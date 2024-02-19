@@ -5,7 +5,9 @@ title:  "November 2023: Shaders with ilithya"
 date:   2023-11-14 18:30:00 +0100
 categories: meetups shaders
 ---
-## November 2023: Shaders with ilithya
+Our last installment of the Creative Coding Cooking Club for 2023 happened on the 14th of November. We had a special guest: Digital artist Ilithya who gave us a crash course in shaders, short pieces of code that run natively on the graphics card. For each pixel on the screen in parallel! How cool is that!
+
+<!-- more -->
 
 ### Links to start with
 
