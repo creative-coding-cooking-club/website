@@ -2,50 +2,94 @@
 # Feel free to add content and custom Front Matter to this file.
 # To modify the layout, see https://jekyllrb.com/docs/themes/#overriding-theme-defaults
 
-layout: home
-list_title: Meetups
+layout: default
+pagination:
+  enabled: true
+hide_title: true
+cube_r: 0.19
+cube_g: 0.22
+cube_b: 0.99
 ---
+<div class="home">
 
-<center>
-  <canvas id="glcanvas" width="500px" height="500px" tabindex="1"></canvas>
-</center>
+<div class="cubes-header-container">
+  {% include cubes.html %}
 
-<script type="text/javascript" src="cables_sketches/pott/patch.js" async></script>
+  <header class="site-header">
+    <h1 class="title">{{ site.title }}</h1>
+    {% if site.subtitle %}<p class="subtitle">{{ site.subtitle }}</p>{% endif %}
+  </header>
+</div>
 
+<div class="wrapper">
+<ul class="post-list">
+  {% for post in paginator.posts %}
+    <li>
+      <h2>
+        <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
+      </h2>
+      <section class="post-excerpt" itemprop="description">
+        <p>{{ post.excerpt }}</p>
+      </section>
+      <section class="post-meta">
+        <div class="post-date">{{ post.date | date: "%B %-d, %Y" }}</div>
+        <div class="post-categories">
+        {% if post.categories.size > 0 %}in {% for cat in post.categories %}
+          {% if site.jekyll-archives %}
+          <a href="{{ site.baseurl }}/category/{{ cat }}">{{ cat | capitalize }}</a>{% if forloop.last == false %}, {% endif %}
+          {% else %}
+          <a href="{{ site.baseurl }}/posts/#{{ cat }}">{{ cat | capitalize }}</a>{% if forloop.last == false %}, {% endif %}
+          {% endif %}
+        {% endfor %}{% endif %}
+        </div>
+      </section>
+    </li>
+    {% if forloop.last == false %}
+    <hr>
+    {% endif %}
+  {% endfor %}
+</ul>
 
-<script type="text/javascript">
+<nav class="pagination" role="navigation">
+    <p>
+    {% if paginator.previous_page %}
+            {% if paginator.page == 2 %}
+            <a class="newer-posts" href="{{ site.baseurl }}{{ paginator.previous_page_path }}">
+        <span class="fa-stack fa-lg">
+          <i class="fa fa-square fa-stack-2x"></i>
+          <i class="fa fa-angle-double-left fa-stack-1x fa-inverse"></i>
+        </span>
+      </a>
+            {% else %}
+            <a class="newer-posts" href="{{ site.baseurl }}{{ paginator.next_page_path }}">
+                <span class="fa-stack fa-lg">
+                    <i class="fa fa-square fa-stack-2x"></i>
+                    <i class="fa fa-angle-double-left fa-stack-1x fa-inverse"></i>
+                </span>
+            </a>
+            {% endif %}
+        {% else %}
+        <span class="fa-stack fa-lg">
+      <i class="fa fa-square fa-stack-2x"></i>
+      <i class="fa fa-angle-double-left fa-stack-1x fa-inverse"></i>
+    </span>
+        {% endif %}
+        <span class="page-number">Page {{ paginator.page }} of {{ paginator.total_pages }}</span>
+        {% if paginator.next_page %}
+        <a class="newer-posts" href="{{ site.baseurl }}{{ paginator.next_page_path }}">
+      <span class="fa-stack fa-lg">
+        <i class="fa fa-square fa-stack-2x"></i>
+        <i class="fa fa-angle-double-right fa-stack-1x fa-inverse"></i>
+      </span>
+    </a>
+        {% else %}
+        <span class="fa-stack fa-lg">
+      <i class="fa fa-square fa-stack-2x"></i>
+      <i class="fa fa-angle-double-right fa-stack-1x fa-inverse"></i>
+    </span>
+        {% endif %}
+    </p>
+</nav>
 
-    function showError(errId, errMsg)
-    {
-        // handle critical errors here if needed
-    }
-
-    function patchInitialized(patch)
-    {
-        // You can now access the patch object (patch), register variable watchers and so on
-    }
-
-    function patchFinishedLoading(patch)
-    {
-        // The patch is ready now, all assets have been loaded
-    }
-
-    document.addEventListener("CABLES.jsLoaded", function (event)
-    {
-        CABLES.patch = new CABLES.Patch({
-            patch: CABLES.exportedPatch,
-            "prefixAssetPath": "",
-            "assetPath": "",
-            "jsPath": "",
-            "glCanvasId": "glcanvas",
-            "glCanvasResizeToWindow": false,
-            "onError": showError,
-            "onPatchLoaded": patchInitialized,
-            "onFinishedLoading": patchFinishedLoading,
-            "canvas": {"alpha":true, "premultipliedAlpha":true } // make canvas transparent
-        });
-    });
-
-    // disable rubberband effect on mobile devices
-    document.getElementById('glcanvas').addEventListener('touchmove', (e)=>{ e.preventDefault(); }, false);
-</script>
+</div>
+</div>

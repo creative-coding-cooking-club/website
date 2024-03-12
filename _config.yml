@@ -28,9 +28,31 @@ url: "https://creativecodingcooking.club" # the base hostname & protocol for you
 github_username:  creative-coding-cooking-club
 
 # Build settings
-theme: minima
 plugins:
   - jekyll-feed
+  - jekyll-archives # Sorry, not GitHub pages friendly!
+  - jekyll-sitemap
+  - jekyll-paginate-v2
+
+# Pagination Settings
+# https://github.com/sverrirs/jekyll-paginate-v2/blob/master/README-GENERATOR.md#site-configuration
+pagination:
+  enabled: true
+  per_page: 5
+  permalink: "/page/:num/"
+  sort_reverse: true
+
+# Archive settings (see https://github.com/jekyll/jekyll-archives/)
+jekyll-archives:
+  enabled:
+    - categories
+    - tags
+  layout: 'archive'
+  permalinks:
+    category: '/category/:name/'
+    tag: '/tag/:name/'
+
+cover: "/assets/header_image.jpg"
 
 # Exclude from processing.
 # The following items will not be processed, by default.

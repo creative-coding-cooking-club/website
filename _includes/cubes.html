@@ -1,0 +1,44 @@
+<div class="canvas-wrapper"><canvas id="glcanvas"></canvas></div>
+<script type="text/javascript" src="/js/patch.js" async></script>
+
+<script>
+  /**
+   * Called when there was a cables error.
+   * @param {string} errId - ID of the error, e.g. 'NO_WEBGL' or 'NO_WEBAUDIO'
+   *                         when the browser does not support the used APIs
+   * @param {string} errMsg - The error message
+   */
+  function showError(errId, errMsg) {
+    console.error(errId, errMsg);
+  }
+
+  function patchInitialized() {
+      // You can now access the patch object (CABLES.patch), register variable watchers and so on
+      console.log("HERE")
+  }
+
+  function patchFinishedLoading() {
+      // The patch is ready now, all assets have been loaded
+  }
+
+  document.addEventListener('CABLES.jsLoaded', function(event) {
+    console.log("YIP")
+    CABLES.patch = new CABLES.Patch({
+      patch: CABLES.exportedPatch,
+      prefixAssetPath: '',
+      glCanvasId: 'glcanvas',
+      glCanvasResizeToParent: true,
+      onError: showError,
+      onPatchLoaded: patchInitialized,
+      onFinishedLoading: patchFinishedLoading,
+    });
+
+    // Colors
+    CABLES.patch.setVariable('cube_r', {{page.cube_r | default: 0.6}})
+    CABLES.patch.setVariable('cube_g', {{page.cube_g | default: 0.6}})
+    CABLES.patch.setVariable('cube_b', {{page.cube_b | default: 0.6}})
+    CABLES.patch.setVariable('cube_x', {{page.cube_x | default: 0.0}})
+    CABLES.patch.setVariable('cube_y', {{page.cube_y | default: 0.0}})
+    CABLES.patch.setVariable('cube_z', {{page.cube_z | default: 0.0}})
+  });
+</script>
