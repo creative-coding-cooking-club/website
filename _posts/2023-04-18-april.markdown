@@ -1,0 +1,16 @@
+---
+layout: post
+title: "April 2023: Hand Tracking in cables.gl"
+date: 2023-04-18 18:30:00 +0100
+categories: meetups cables visual
+---
+
+We started off with an easy recipe to use hand tracking in cables.gl
+
+<!-- more -->
+
+Ingredients:
+
+- cables.gl
+- hand tracking
+- shapes and colors

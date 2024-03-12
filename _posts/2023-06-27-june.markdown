@@ -1,0 +1,16 @@
+---
+layout: post
+title: "June 2023: Audio Reactive Behaviour"
+date: 2023-04-18 18:30:00 +0100
+categories: meetups audio
+---
+
+This time we looked at how to use audio input and react to it.
+
+<!-- more -->
+
+Ingredients:
+
+- lots of claps
+- shapes
+- colors
