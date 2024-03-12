@@ -6,15 +6,12 @@ layout: default
 pagination:
   enabled: true
 hide_title: false
-cube_r: 0.19
-cube_g: 0.22
-cube_b: 0.99
 ---
 
 <div class="home">
 
 <div class="cubes-header-container">
-  {% include cubes.html %}
+  {% include 3dheader.html %}
 
   <header class="site-header">
     <h1 class="title">{{ site.title }}</h1>

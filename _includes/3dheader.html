@@ -1,5 +1,5 @@
 <div class="canvas-wrapper"><canvas id="glcanvas"></canvas></div>
-<script type="text/javascript" src="/js/patch.js" async></script>
+<script type="text/javascript" src="/cables_sketches/kitchen/patch.js" async></script>
 
 <script>
   /**
@@ -25,20 +25,12 @@
     console.log("YIP")
     CABLES.patch = new CABLES.Patch({
       patch: CABLES.exportedPatch,
-      prefixAssetPath: '',
+      prefixAssetPath: '/cables_sketches/kitchen/',
       glCanvasId: 'glcanvas',
       glCanvasResizeToParent: true,
       onError: showError,
       onPatchLoaded: patchInitialized,
       onFinishedLoading: patchFinishedLoading,
     });
-
-    // Colors
-    CABLES.patch.setVariable('cube_r', {{page.cube_r | default: 0.6}})
-    CABLES.patch.setVariable('cube_g', {{page.cube_g | default: 0.6}})
-    CABLES.patch.setVariable('cube_b', {{page.cube_b | default: 0.6}})
-    CABLES.patch.setVariable('cube_x', {{page.cube_x | default: 0.0}})
-    CABLES.patch.setVariable('cube_y', {{page.cube_y | default: 0.0}})
-    CABLES.patch.setVariable('cube_z', {{page.cube_z | default: 0.0}})
   });
 </script>
