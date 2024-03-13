@@ -1,0 +1,17 @@
+---
+layout: post
+title: "Next: Shaders/Materials in cables.gl"
+date: 2024-03-13 18:30:00 +0100
+categories: meetups cables visual
+---
+
+New year, time to remix: we've done shaders, we've done cables.gl - let's see how it goes together. 26.03.
+Sign up on [Meetup](https://www.meetup.com/hamburg-education-technology-meetup/events/299675233).
+
+<!-- more -->
+
+Ingredients:
+
+- cables.gl
+- shaders
+- shapes and colors
